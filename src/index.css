@@ -1,0 +1,839 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #040910;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   LOADING ANIMATIONS
+======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply animations to elements */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.scale-in {
+  animation: scaleIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Animation delays */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1s; }
+
+/* ========================================
+   HEADER / NAVBAR STYLES
+======================================== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: transparent;
+  position: relative;
+  z-index: 1000;
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFA500;
+  z-index: 1001;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #FFA500;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #FFA500;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+.icon-link {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.icon-link:hover {
+  color: #FFA500;
+  transform: translateY(-2px);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  color: #FFA500;
+  transform: rotate(180deg);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+  gap: 5px;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ========================================
+   HERO SECTION
+======================================== */
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 100px);
+}
+
+.hero-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-name {
+  color: #734c03;
+}
+
+.hero-description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  color: #c9d1d9;
+  margin-bottom: 2rem;
+}
+
+.hero-link {
+  color: #c9d1d9;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.hero-link:hover {
+  color: #FFA500;
+}
+
+.wave-divider {
+  margin: 3rem auto;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wave-divider svg {
+  width: 100%;
+  height: auto;
+}
+
+/* ========================================
+   SOCIAL SECTION
+======================================== */
+
+.social-section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #c9d1d9;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.social-link:hover {
+  color: #FFA500;
+  background-color: rgba(255, 165, 0, 0.1);
+  transform: translateX(5px);
+}
+
+.social-link svg {
+  flex-shrink: 0;
+}
+
+/* ========================================
+   CONTACT SECTION
+======================================== */
+
+.contact-section {
+  margin-top: 2rem;
+}
+
+.contact-text {
+  font-size: 1rem;
+  color: #c9d1d9;
+  line-height: 1.6;
+}
+
+.contact-email {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  word-break: break-word;
+}
+
+.contact-email:hover {
+  color: #FFA500;
+  text-decoration: underline;
+}
+
+/* ========================================
+   RESUME PAGE STYLES
+======================================== */
+
+.resume-page {
+  min-height: 100vh;
+  padding: 4rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.resume-content {
+  width: 100%;
+}
+
+.resume-title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.resume-intro {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.7;
+  color: #c9d1d9;
+  margin-bottom: 2rem;
+}
+
+/* ========================================
+   SKILLS SECTION
+======================================== */
+
+.skills-section {
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+
+.section-heading {
+  font-size: clamp(1.5rem, 3vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.section-description {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.7;
+  color: #c9d1d9;
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #c9d1d9;
+  transition: all 0.3s ease;
+  animation: scaleIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.skill-badge:hover {
+  background-color: rgba(255, 165, 0, 0.1);
+  border-color: rgba(255, 165, 0, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.2);
+}
+
+.skill-icon {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.skill-name {
+  font-weight: 500;
+}
+
+/* ========================================
+   WORK HISTORY / PROJECTS
+======================================== */
+
+.work-history-section {
+  margin-top: 4rem;
+}
+
+.timeline {
+  position: relative;
+  margin-top: 3rem;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background-color: #FFA500;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 165, 0, 0.2);
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 5.5px;
+  top: 1.5rem;
+  bottom: -3rem;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-content {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 165, 0, 0.2);
+  transform: translateX(5px);
+}
+
+.job-title {
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover .job-title {
+  color: #FFA500;
+  transform: translateX(5px);
+}
+
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+}
+
+.job-company {
+  color: #c9d1d9;
+  font-weight: 500;
+}
+
+.job-separator {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.job-location,
+.job-type {
+  color: #8b949e;
+}
+
+.project-link-wrapper {
+  margin: 0.75rem 0 1rem 0;
+}
+
+.visit-website {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #FFA500;
+  text-decoration: none;
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 1px solid #FFA500;
+  border-radius: 6px;
+  background-color: rgba(255, 165, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.visit-website:hover {
+  background-color: rgba(255, 165, 0, 0.15);
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.2);
+}
+
+.job-responsibilities {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.job-responsibilities li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  line-height: 1.6;
+  color: #c9d1d9;
+}
+
+.job-responsibilities li:last-child {
+  margin-bottom: 0;
+}
+
+.job-responsibilities li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #FFA500;
+  font-weight: bold;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - TABLETS
+======================================== */
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 1.5rem 2rem;
+  }
+
+  .hero {
+    padding: 2rem 2rem;
+  }
+
+  .resume-page {
+    padding: 3rem 2rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    max-width: 300px;
+    background-color: #0a1119;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+  }
+
+  .nav.nav-open {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  .nav-icons {
+    margin-left: 0;
+    margin-top: auto;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+
+  .hero {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+
+  .hero-title {
+    margin-bottom: 1rem;
+  }
+
+  .hero-description {
+    margin-bottom: 1.5rem;
+  }
+
+  .wave-divider {
+    margin: 2rem auto;
+  }
+
+  .social-section {
+    margin-bottom: 2rem;
+  }
+
+  .social-links {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+
+  .resume-page {
+    padding: 2rem 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .skill-badge {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .timeline-item {
+    padding-left: 2rem;
+  }
+
+  .timeline-content {
+    padding: 1.25rem;
+  }
+
+  .job-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .job-separator {
+    display: none;
+  }
+
+  .visit-website {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .nav {
+    width: 80%;
+  }
+
+  .hero {
+    padding: 1rem;
+  }
+
+  .hero-description br {
+    display: none;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    padding: 0.75rem;
+  }
+
+  .contact-section {
+    margin-top: 1.5rem;
+  }
+
+  .resume-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-marker {
+    width: 10px;
+    height: 10px;
+    left: -1px;
+  }
+
+  .timeline-item::before {
+    left: 4px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY & MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid #FFA500;
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========================================
+   PRINT STYLES
+======================================== */
+
+@media print {
+  .header,
+  .hamburger,
+  .theme-toggle,
+  .nav-icons {
+    display: none !important;
+  }
+
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .hero-name {
+    color: #000;
+  }
+}
