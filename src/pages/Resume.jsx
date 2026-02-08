@@ -18,13 +18,10 @@ const Resume = () => {
     { name: 'JavaScript', icon: 'JS' },
     { name: 'Redux', icon: '⚛' },
     { name: 'Tailwind', icon: '🌊' },
-    { name: 'shadcn/ui', icon: '📦' },
     { name: 'Node', icon: '⬢' },
-    { name: 'Postgres', icon: '🐘' },
     { name: 'MongoDB', icon: '🍃' },
     { name: 'Redis', icon: '◆' },
     { name: 'Vite', icon: '⚡' },
-    { name: 'Docker', icon: '🐳' },
     { name: 'Git', icon: '⎇' },
     { name: 'GitHub', icon: '' },
   ];

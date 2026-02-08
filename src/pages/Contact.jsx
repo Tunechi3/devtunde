@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import React, { useState, useRef } from 'react'
+import emailjs from '@emailjs/browser'
+import Home from '../components/Home'
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 
 const Contact = () => {
+  const formRef = useRef();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,16 +31,33 @@ const Contact = () => {
     e.preventDefault();
     setFormStatus({ submitting: true, submitted: false, error: false });
 
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus({ submitting: false, submitted: true, error: false });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus({ submitting: false, submitted: false, error: false });
-      }, 5000);
-    }, 1500);
+    // EmailJS Configuration
+    // Replace these with your actual EmailJS credentials
+    const serviceID = 'service_athjisa';
+    const templateID = 'template_zhj6vxt';
+    const publicKey = '_jnDhr9_IAb95Xy87';
+
+    // Send email using EmailJS
+    emailjs.sendForm(serviceID, templateID, formRef.current, publicKey)
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        setFormStatus({ submitting: false, submitted: true, error: false });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setFormStatus({ submitting: false, submitted: false, error: false });
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error('Email send failed:', error.text);
+        setFormStatus({ submitting: false, submitted: false, error: true });
+        
+        // Reset error message after 5 seconds
+        setTimeout(() => {
+          setFormStatus({ submitting: false, submitted: false, error: false });
+        }, 5000);
+      });
   };
 
   return (
@@ -65,7 +86,7 @@ const Contact = () => {
               <p className="form-subtitle">Fill out the form below and I'll get back to you within 24 hours</p>
             </div>
 
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name" className="form-label">
                   Full Name
@@ -163,6 +184,17 @@ const Contact = () => {
                   <span>Message sent successfully! I'll get back to you soon.</span>
                 </div>
               )}
+
+              {formStatus.error && (
+                <div className="form-error-message">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                  <span>Failed to send message. Please try again or email me directly.</span>
+                </div>
+              )}
             </form>
           </div>
 
@@ -182,7 +214,7 @@ const Contact = () => {
               <a href="mailto:oluwadamilarebabatunde39@gmail.com" className="info-link">
                 oluwadamilarebabatunde39@gmail.com
               </a>
-              <p className="info-card-note">I typically respond within an hour</p>
+              <p className="info-card-note">I typically respond within 24 hours</p>
             </div>
 
             {/* Location Card */}
@@ -261,6 +293,8 @@ const Contact = () => {
               <div className="expertise-tags">
                 <span className="expertise-tag">Full-Stack Development</span>
                 <span className="expertise-tag">React & Node.js</span>
+                <span className="expertise-tag">Web Applications</span>
+                <span className="expertise-tag">UI/UX Design</span>
                 <span className="expertise-tag">API Development</span>
                 <span className="expertise-tag">Database Design</span>
               </div>
