@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Resume = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -45,6 +47,7 @@ const Resume = () => {
 
   return (
     <>
+    <Navbar/>
       <div className="resume-page">
         <div className={`resume-content ${isLoaded ? 'loaded' : ''}`}>
           <h1 className="resume-title fade-in-up">My Resume / Past Work</h1>
@@ -122,6 +125,7 @@ const Resume = () => {
           </section>
         </div>
       </div>
+      <Footer/>
     </>
   )
 }
