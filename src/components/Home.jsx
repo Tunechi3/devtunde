@@ -17,9 +17,7 @@ const Home = () => {
             Hey, I'm <span className="hero-name">Babatunde Ramon</span>!
           </h1>
           <p className="hero-description fade-in-up delay-1">
-            A freelance full-stack engineer and a trained anatomist based in Lagos, Nigeria.  
-            <br />
-             I'm passionate about learning, building modern web experiences, and solving real-world problems through code. I'm continuously growing my skills and creating projects that blend creativity, logic, and technology.
+            A freelance full-stack engineer and a trained anatomist based in Lagos, Nigeria.  I'm passionate about learning, building modern web experiences, and solving real-world problems through code. I'm continuously growing my skills and creating projects that blend creativity, logic, and technology.
           </p>
 
           <div className="wave-divider fade-in delay-2">
