@@ -83,7 +83,7 @@ const Contact = () => {
           <div className="contact-form-section">
             <div className="form-header">
               <h2 className="form-title">Send Me a Message</h2>
-              <p className="form-subtitle">Fill out the form below and I'll get back to you within 24 hours</p>
+              <p className="form-subtitle">Fill out the form below and I'll get back to you within the hour</p>
             </div>
 
             <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
@@ -214,7 +214,7 @@ const Contact = () => {
               <a href="mailto:oluwadamilarebabatunde39@gmail.com" className="info-link">
                 oluwadamilarebabatunde39@gmail.com
               </a>
-              <p className="info-card-note">I typically respond within 24 hours</p>
+              <p className="info-card-note">I typically respond within the hour</p>
             </div>
 
             {/* Location Card */}
@@ -293,8 +293,6 @@ const Contact = () => {
               <div className="expertise-tags">
                 <span className="expertise-tag">Full-Stack Development</span>
                 <span className="expertise-tag">React & Node.js</span>
-                <span className="expertise-tag">Web Applications</span>
-                <span className="expertise-tag">UI/UX Design</span>
                 <span className="expertise-tag">API Development</span>
                 <span className="expertise-tag">Database Design</span>
               </div>

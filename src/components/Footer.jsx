@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-left">
           <p className="footer-text">
-            © {currentYear} Built with <span className="heart">❤️</span> by Babatunde Ramon
+            © {currentYear} Babatunde Ramon
           </p>
         </div>
         

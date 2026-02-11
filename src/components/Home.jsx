@@ -140,7 +140,7 @@ const Home = () => {
                   
                   <div className="contact-badge">
                     <div className="status-indicator"></div>
-                    <span className="status-text">Usually responds within 24 hours</span>
+                    <span className="status-text">Usually responds within the hour</span>
                   </div>
                 </div>
               </div>
