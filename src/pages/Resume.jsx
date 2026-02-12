@@ -20,7 +20,6 @@ const Resume = () => {
     { name: 'Tailwind', icon: '🌊' },
     { name: 'Node', icon: '⬢' },
     { name: 'MongoDB', icon: '🍃' },
-    { name: 'Redis', icon: '◆' },
     { name: 'Vite', icon: '⚡' },
     { name: 'Git', icon: '⎇' },
     { name: 'GitHub', icon: '' },
@@ -37,9 +36,19 @@ const Resume = () => {
         'Built a fully responsive online shopping platform with cart functionality.',
         'Implemented secure payment integration with Stripe API.',
         'Created an admin dashboard for inventory and order management.',
-        'Optimized performance achieving 95+ Lighthouse score.',
       ],
     },
+    {
+  title: 'Wallstreet One',
+  category: 'Financial Web Application',
+  technologies: 'React • Tailwind CSS',
+  year: '2026 (In Progress)',
+  link: 'https://wallstreet-one.vercel.app/',
+  features: [
+    'Designing modern UI components using Tailwind CSS for clean, scalable layouts.',
+    'Structuring reusable React components to ensure maintainability and performance.',
+  ],
+},
   ];
 
   return (
