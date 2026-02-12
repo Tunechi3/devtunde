@@ -39,7 +39,7 @@ const Resume = () => {
       ],
     },
     {
-  title: 'Wallstreet One',
+  title: 'Wallstreet Trade',
   category: 'Financial Web Application',
   technologies: 'React • Tailwind CSS',
   year: '2026 (In Progress)',
