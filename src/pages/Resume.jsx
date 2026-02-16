@@ -49,6 +49,31 @@ const Resume = () => {
     'Structuring reusable React components to ensure maintainability and performance.',
   ],
 },
+{
+  title: 'User Management System',
+  category: 'Full-Stack Web Application',
+  technologies: 'Angular • TypeScript • CSS • SCSS',
+  year: '2025',
+  link: 'https://user-management-app-two-kappa.vercel.app/',
+  features: [
+    'Developed a comprehensive user management system with CRUD operations.',
+    'Implemented authentication and authorization with role-based access control.',
+    'Created an intuitive admin interface for managing user profiles and permissions.',
+  ],
+},
+{
+  title: 'JustFood Restaurant Website',
+  category: 'Frontend Web Design',
+  technologies: 'HTML • CSS',
+  year: '2024',
+  link: 'http://justfood-project.vercel.app/',
+  features: [
+    'Designed a modern restaurant landing page using semantic HTML and clean CSS layouts.',
+    'Implemented responsive sections for menu display, promotions, and user navigation.',
+    'Focused on visual hierarchy, accessibility, and mobile-friendly styling.',
+  ],
+},
+
   ];
 
   return (
